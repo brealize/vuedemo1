@@ -1,12 +1,46 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    
     <router-view/>
+	
+	<van-tabbar v-model="active" active-color="#FF464E" inactive-color="#BBBBBB">
+	  <van-tabbar-item to="/">
+	      <span >首页</span>
+	      <template #icon="props">
+	        <img :src="props.active ? require('./assets/img/homesel.png') : require('./assets/img/home.png')" />
+	      </template>
+	    </van-tabbar-item>
+	  <van-tabbar-item to="/sort">
+	      <span >分类</span>
+	      <template #icon="props">
+	        <img :src="props.active ? require('./assets/img/sortsel.png') : require('./assets/img/sort.png')" />
+	      </template>
+	    </van-tabbar-item>
+		<van-tabbar-item to="/cart">
+		    <span >购物车</span>
+		    <template #icon="props">
+		      <img :src="props.active ? require('./assets/img/cart.png') : require('./assets/img/cart.png')" />
+		    </template>
+		  </van-tabbar-item>
+		  <van-tabbar-item to="/mine">
+		      <span >我的卷皮</span>
+		      <template #icon="props">
+		        <img :src="props.active ? require('./assets/img/minesel.png') : require('./assets/img/mine.png')" />
+		      </template>
+		    </van-tabbar-item>
+	</van-tabbar>
   </div>
 </template>
+
+<script>
+	export default{
+		data(){
+			return{
+				active:0
+			}
+		}
+	}
+</script>
 
 <style lang="less">
 #app {
@@ -17,16 +51,5 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
