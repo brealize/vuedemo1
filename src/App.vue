@@ -2,7 +2,6 @@
   <div id="app">
     
     <router-view/>
-	
 	<van-tabbar v-model="active" active-color="#FF464E" inactive-color="#BBBBBB">
 	  <van-tabbar-item to="/">
 	      <span >首页</span>

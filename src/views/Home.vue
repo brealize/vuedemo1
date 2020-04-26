@@ -15,12 +15,41 @@
 			  </van-swipe-item>
 			</van-swipe>
 		</div>
-		
+		<div class="itembar">
+			<router-link to=""><img src="../assets/img/icon1.png" alt=""></router-link>
+			<router-link to=""><img src="../assets/img/icon2.png" alt=""></router-link>
+			<router-link to=""><img src="../assets/img/icon3.png" alt=""></router-link>
+			<router-link to=""><img src="../assets/img/icon4.png" alt=""></router-link>
+		</div>
+		<div class="pagelink">
+			<router-link to=""><img src="../assets/img/type2_1.gif" style="width: 3.75rem;"></router-link>
+			<router-link to=""><img src="../assets/img/type2_2.png" style="width: 3.75rem;"></router-link>
+			<router-link to=""><img src="../assets/img/type2_3.png" style="width: 3.75rem;" class="three"></router-link>		
+		</div>
+		<div class="gobanner">
+			<router-link to=""><img src="../assets/img/type3-1.gif" style="width: 7.5rem;"></router-link>
+			<img src="../assets/img/type4_1.png" style="width: 7.5rem;margin-top: .1rem;margin-bottom: .1rem;">
+		</div>
+		<div class="fill"></div>
+		<van-tabs v-model="active" title-active-color="#FF464E" style="width: 3.36rem;height: .88rem;font-size:.32rem;position: relative;bottom:.88rem;background-color: #F4F4F8;">
+		  <van-tab title="精选专场" style="width: 7.5rem;position: relative;bottom:50px;margin-top: 50px;">
+		    <hometab></hometab>
+		  </van-tab>
+		  <van-tab title="精选单品" style="width: 7.5rem;position: relative;bottom:50px;margin-top: 50px;">
+			<hometype2></hometype2>
+		  </van-tab>
+		</van-tabs>
+		<div class="gotop" @click="gotop">
+			<img src="../assets/img/gotop.png">
+		</div>
   </div>
+  
 </template>
 
 <style lang="less" scoped="scoped">
 	.home{
+		transition: all 3s;
+		background-color: #F4F4F8;
 		.search{
 			display: flex;
 			align-items: center;
@@ -63,6 +92,43 @@
 			height: 2.9rem;
 			overflow: hidden;
 		}
+		.itembar{
+			display: flex;
+			height: 1.68rem;
+			width: 100%;
+			border-bottom: 1px solid #FCFCFD;
+			img{
+				width: 100%;
+			}
+		}
+		.pagelink{
+			display: flex;
+			width: 100%;
+			overflow: hidden;
+			border-bottom: 1px solid #FCFCFD;
+			.three{
+				position: relative;
+				right:3.75rem;
+				top:2.27rem
+			}
+		}
+		.fill{
+			width: 4.14rem;
+			height: .88rem;
+			background-color: #fff;
+			position: relative;
+			left:3.36rem
+		}
+		.gotop{
+			position: fixed;
+			bottom:.95rem;
+			right:.2rem;
+			img{
+				width: .8rem;
+				height: .8rem;
+			}
+		}
+
 	}
 </style>
 
@@ -74,19 +140,25 @@ import { Lazyload } from 'vant';
 
 Vue.use(Lazyload);
 
+import hometab from "@/components/HomeTab"
+import hometype2 from "../components/HomePage2"
 export default {
   name: 'Home',
   data(){
 	return{
+		active:0,
 		images:[
 			 require('../assets/img/banner1.jpg'),
 			 require('../assets/img/banner2.jpg'),
-			 require('../assets/img/banner3.jpg')
-		]
+			 require('../assets/img/banner3.jpg'),
+		],
+		
+		
 	}  
   },
   components: {
-   
+	hometab,
+	hometype2
   },
   methods:{
 	  gosearch(){
@@ -94,6 +166,18 @@ export default {
 	  },
 	  gosort(){
 		this.$router.push("/sort")  
+	  },
+	  gotop(){
+		  var timer = setInterval(function(){
+		  let osTop = document.documentElement.scrollTop || document.body.scrollTop;
+		  let ispeed = Math.floor(-osTop / 5); 
+		  document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed;
+		  this.isTop = true;
+		  if(osTop === 0){
+		    clearInterval(timer);
+		  }
+		},30)
+		   
 	  }
   }
 }
