@@ -12,6 +12,11 @@ import './assets/js/flexible.min.js'
 
 Vue.config.productionTip = false
 
+//注册axios
+import * as api from "./api/index.js";
+console.log(api);
+Vue.prototype.$api = api;
+
 new Vue({
   router,
   store,

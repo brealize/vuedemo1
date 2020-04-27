@@ -36,7 +36,7 @@
 		    <hometab></hometab>
 		  </van-tab>
 		  <van-tab title="精选单品" style="width: 7.5rem;position: relative;bottom:50px;margin-top: 50px;">
-			<hometype2></hometype2>
+			<hometype2 :datas="datas"></hometype2>
 		  </van-tab>
 		</van-tabs>
 		<div class="gotop" @click="gotop">
@@ -140,6 +140,8 @@ import { Lazyload } from 'vant';
 
 Vue.use(Lazyload);
 
+import {goodpage2 as page2} from "../data/index.js"
+
 import hometab from "@/components/HomeTab"
 import hometype2 from "../components/HomePage2"
 export default {
@@ -152,9 +154,12 @@ export default {
 			 require('../assets/img/banner2.jpg'),
 			 require('../assets/img/banner3.jpg'),
 		],
-		
+		datas:[],
 		
 	}  
+  },
+  created() {
+  	this.datas = page2.data.goods;
   },
   components: {
 	hometab,

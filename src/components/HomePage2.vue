@@ -15,16 +15,8 @@
 </template>
 
 <script>
-	import {goodpage2 as page2} from "../data/index.js"
 	export default{
-		data(){
-			return{
-				datas:[],
-			}
-		},
-		created() {
-			this.datas = page2.data.goods;
-		}
+		props:["datas"],
 	}
 </script>
 

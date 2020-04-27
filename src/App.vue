@@ -2,7 +2,7 @@
   <div id="app">
     
     <router-view/>
-	<van-tabbar v-model="active" active-color="#FF464E" inactive-color="#BBBBBB">
+	<van-tabbar v-show="$route.meta.showtabbar" route active-color="#FF464E" inactive-color="#BBBBBB" v-model="active">
 	  <van-tabbar-item to="/">
 	      <span >首页</span>
 	      <template #icon="props">
@@ -35,7 +35,7 @@
 	export default{
 		data(){
 			return{
-				active:0
+				active:0,
 			}
 		}
 	}

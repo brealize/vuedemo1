@@ -39,12 +39,12 @@
 		justify-content: space-between;
 		.goods{
 			position: relative;
-			width: 3.73rem;
+			width: 49.4%;
 			height: 4.85rem;
 			border:1px solid #FAFAFC;
 			border-left:none;
 			.pic{
-				width: 3.73rem;
+				width: 100%;
 				height: 3.73rem;
 			}
 			.tips{
