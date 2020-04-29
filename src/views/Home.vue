@@ -9,7 +9,7 @@
 			<img src="../assets/img/search_home.png" alt="" @click="gosort">
 		</div>
 		<div class="swipe">
-			<van-swipe :autoplay="3000" width="7.5rem">
+			<van-swipe :autoplay="3000" width="100%">
 			  <van-swipe-item v-for="(image, index) in images" :key="index">
 			    <img v-lazy="image" style="width: 7.5rem;" />
 			  </van-swipe-item>
@@ -167,7 +167,7 @@ export default {
   },
   methods:{
 	  gosearch(){
-		  
+		this.$router.push("/search")
 	  },
 	  gosort(){
 		this.$router.push("/sort")  

@@ -31,15 +31,48 @@ axios.defaults.baseURL = "http://brealize.com";
      return Promise.reject(error);
    });
 
-
 import "./mockdata.js"
+
+import jsCookie from 'js-cookie'
 
 let searchAPI = (data)=>{
 	return axios.post("/search.php",data);
 }
 
+let detailAPI = (data)=>{
+	return axios.post("/detail.php",{
+		params:{
+			id:data.id
+		}
+	})
+}
 
+let loginAPI = (data)=>{
+	return axios.post("/login.php",data)
+}
+
+let sendsmsAPI = (data)=>{
+	return axios.post("/sms.php",data)
+}
+
+let registAPI = (data)=>{
+	return axios.post("/regist.php",data)
+}
+
+let getUserInfoAPI = ()=>{
+	return axios.get("/userinfo.php")
+}
+
+let modifyUserInfoAPI = ()=>{
+	return axios.get("/userinfo.php")
+}
 
 export {
 	searchAPI,
+	detailAPI,
+	loginAPI,
+	sendsmsAPI,
+	registAPI,
+	getUserInfoAPI,
+	modifyUserInfoAPI
 }

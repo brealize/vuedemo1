@@ -5,7 +5,7 @@ import store from './store'
 
 import Vant from 'vant';
 import 'vant/lib/index.css';
-Vue.use(Vant);		
+Vue.use(Vant);	
 //引入vant
 
 import './assets/js/flexible.min.js'
@@ -16,6 +16,10 @@ Vue.config.productionTip = false
 import * as api from "./api/index.js";
 console.log(api);
 Vue.prototype.$api = api;
+
+//注册js-cookie
+import jsCookie from 'js-cookie'
+Vue.prototype.$jsCookie = jsCookie
 
 new Vue({
   router,

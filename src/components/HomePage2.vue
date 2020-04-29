@@ -2,7 +2,7 @@
 	<div>
 		<div class="homepage2">
 			<div class="goods" v-for="(item,index) in datas" :key="index">
-				<router-link to=""><img class="pic" :src="item.pic_url"></router-link>
+				<router-link :to="{name:'Detail',params:{id:item.goods_id}}"><img class="pic" :src="item.pic_url"></router-link>
 				<div class="price">
 					<span class="new">￥{{item.cprice}}</span>
 					<span class="old">￥{{item.oprice}}</span>

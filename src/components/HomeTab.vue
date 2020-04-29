@@ -2,7 +2,7 @@
 	<div>
 		<div class="hometab">
 			<div class="goods" v-for="(item,index) in datas" :key="index">
-				<router-link to=""><img class="pic" :src="item.pic_url"></router-link>
+				<router-link :to="{name:'Detail',params:{id:item.goods_id}}"><img class="pic" :src="item.pic_url"></router-link>
 				<span class="tips">{{item.coupon_tips}}</span>
 				<br>
 				<div class="bottom">
@@ -28,6 +28,7 @@
 		},
 		created() {
 			this.datas = page1.data.goods;
+			console.log(page1);
 		}
 	}
 </script>

@@ -21,7 +21,30 @@
 		  </van-tab>
 		</van-tabs>
 		<div class="float" v-if="sel">
+			<ul>
+				<li>
+					<router-link to="/">
+						<img src="../assets/img/returnhome.png">
+						<span>首页</span>
+					</router-link>
+				</li>
+				<li>
+					<router-link to="">
+						<img src="../assets/img/like.png">
+						<span>我的收藏</span>
+					</router-link>
+				</li>
+				<li>
+					<router-link to="">
+						<img src="../assets/img/list.png">
+						<span>我的订单</span>
+					</router-link>
+				</li>
+			</ul>
 			<div class="angle"></div>
+		</div>
+		<div class="gotop" @click="gotop">
+			<img src="../assets/img/gotop.png">
 		</div>
 	</div>
 </template>
@@ -100,6 +123,18 @@
 				}else{
 					this.sel=true;
 				}
+			},
+			gotop(){
+				var timer = setInterval(function(){
+				let osTop = document.documentElement.scrollTop || document.body.scrollTop;
+				let ispeed = Math.floor(-osTop / 5); 
+				document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed;
+				this.isTop = true;
+				if(osTop === 0){
+					clearInterval(timer);
+				}
+			},30)
+					   
 			}
 		}
 	}
@@ -142,10 +177,31 @@
 			position:fixed;
 			right:0;
 			top:1rem;
-			width:2.4rem;
+			width:2rem;
 			height:2.7rem;
 			border-radius: 3px;
+			padding: 0 .2rem;
 			background-color: rgba(0,0,0,.7);
+			ul{
+				li{
+					height:0.9rem ;
+					border-bottom: 0.1px solid #fff;
+					a{
+						width:2rem;
+						height:0.9rem;
+						display: flex;
+						align-items: center;
+						img{
+							width: .48rem;
+						}
+						span{
+							margin-left: .2rem;
+							font-size: .31rem;
+							color:#fff;
+						}
+					}
+				}
+			}
 			.angle{
 				width: 0;
 				height: 0;
@@ -155,6 +211,15 @@
 				position: absolute;
 				top: -.22rem;
 				right:.2rem;
+			}
+		}
+		.gotop{
+			position: fixed;
+			bottom:.45rem;
+			right:.2rem;
+			img{
+				width: .8rem;
+				height: .8rem;
 			}
 		}
 	}

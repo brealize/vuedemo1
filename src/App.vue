@@ -18,7 +18,7 @@
 		<van-tabbar-item to="/cart">
 		    <span >购物车</span>
 		    <template #icon="props">
-		      <img :src="props.active ? require('./assets/img/cart.png') : require('./assets/img/cart.png')" />
+		      <img :src="props.active ? require('./assets/img/cartsel.png') : require('./assets/img/cart.png')" />
 		    </template>
 		  </van-tabbar-item>
 		  <van-tabbar-item to="/mine">

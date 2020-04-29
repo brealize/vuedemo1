@@ -5,7 +5,12 @@ import Cart from '../views/Cart.vue'
 import Sort from '../views/Sort.vue'
 import Mine from '../views/Mine.vue'
 import Search from '../views/Search.vue'
+import Detail from '../views/Detail.vue'
 import SearchResult from '../views/SearchResult.vue'
+import Login from '../views/Login.vue'
+import Regist from '../views/Regist.vue'
+
+import JsCookie from 'js-cookie'
 
 Vue.use(VueRouter)
 
@@ -24,6 +29,21 @@ Vue.use(VueRouter)
     component: Search
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/regist',
+    name: 'Regist',
+    component: Regist
+  },
+  {
+    path: '/detail/:id',
+    name: 'Detail',
+    component: Detail
+  },
+  {
     path: '/searchresult',
     name: 'SearchResult',
     component: SearchResult
@@ -34,6 +54,7 @@ Vue.use(VueRouter)
     component: Cart,
 	meta:{
 		showtabbar:true,
+		auth:true
 	}
   },
   {
@@ -50,6 +71,7 @@ Vue.use(VueRouter)
     component: Mine,
 	meta:{
 		showtabbar:true,
+		auth:true
 	}
   },
   // {
@@ -63,7 +85,30 @@ Vue.use(VueRouter)
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior:function(t,f,s){
+	  return{
+		  x:0,
+		  y:0
+	  }
+  }
 })
+
+router.beforeEach((t,f,n)=>{
+	if(t.meta.auth){
+		let logined = JsCookie.get("token");
+		if(logined){
+			console.log("已登录");
+			n()
+		}else{
+			n("/login?next="+t.path);
+			console.log("未登录")
+		}
+	}else{
+		console.log("不需要导航守卫");
+		n()
+	}
+})
+
 
 export default router
